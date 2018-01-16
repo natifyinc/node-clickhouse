@@ -275,8 +275,9 @@ ClickHouse.prototype.query = function (chQuery, options, cb) {
 			options.format = 'Values';
 			options.omitFormat = true;
 
-		} else {
-
+    } else if (chQuery.match(/SELECT/i)) {
+			reqData.finalized = true;
+    } else {
 			reqData.finalized = false;
 
 			if (!chQuery.match (/FORMAT/i)) {
