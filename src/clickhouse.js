@@ -150,7 +150,7 @@ function httpResponseHandler (stream, reqParams, reqData, cb, response) {
 				stream.push (null);
 			}
 		} catch (e) {
-			if (!reqData.format.match (/^(JSON|JSONCompact)$/)) {
+			if (!(reqData.format || '').match (/^(JSON|JSONCompact)$/)) {
 				data = str.toString ('utf8');
 			} else {
 				return errorHandler (e);
